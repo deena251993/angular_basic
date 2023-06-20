@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="text-center">
+                  <h1>Sign Up</h1>
+                  <strong>Signup any time!</strong>
+            </div>
+            <form [formGroup] = "signupForm" (ngSubmit)="signUp()">
+              <div class="mb-3">
+                <label for="InputName1" class="form-label">Name</label>
+                <input type="text" class="form-control" id="InputName" formControlName="name" placeholder="Enter your name">
+                <small *ngIf = "signupForm.get('name')?.invalid && signupForm.get('name')?.touched" class="text-danger">Name is required</small>
+              </div>
+              <div class="mb-3">
+                <label for="InputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="InputEmail1" formControlName="email" aria-describedby="emailHelp" placeholder="Enter your email address">
+                <small *ngIf = "signupForm.get('email')?.invalid && signupForm.get('email')?.touched" class="text-danger">Email is required</small>
+              </div>
+              <div class="mb-3">
+                <label for="InputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control"  formControlName="pwd" id="InputPassword1" placeholder="Enter your password">
+                <small *ngIf = "signupForm.get('pwd')?.invalid && signupForm.get('pwd')?.touched" class="text-danger">Password is required</small>
+              </div>
+              <button type="submit" [disabled]="signupForm.invalid"class="btn btn-primary">SignUp</button>
+            </form>
+            <a style ="color:blue;margin-top:10px;" routerLink="/login">Already registered? Click to login</a>
+          </div>
+        </div>
+    </div>
+</div>
+

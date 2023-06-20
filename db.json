@@ -1,0 +1,112 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "stdName": "Deena",
+      "stdSection": "Primary",
+      "stdClass": "KG",
+      "stdDivision": "A",
+      "stdYear": "2023",
+      "stdMarks": "",
+      "stdMaths": 98,
+      "stdEnglish": 90,
+      "stdScience": 89
+    },
+    {
+      "id": 2,
+      "stdName": "Robin",
+      "stdSection": "Primary",
+      "stdClass": "KG",
+      "stdDivision": "B",
+      "stdYear": "2023",
+      "stdMarks": "",
+      "stdMaths": 99,
+      "stdEnglish": 89,
+      "stdScience": 97
+    },
+    {
+      "id": 3,
+      "stdName": "Asha",
+      "stdSection": "Primary",
+      "stdClass": "1",
+      "stdDivision": "D",
+      "stdYear": "2022",
+      "stdMarks": "",
+      "stdMaths": 90,
+      "stdEnglish": 78,
+      "stdScience": 89
+    },
+    {
+      "id": 4,
+      "stdName": "Vivek",
+      "stdSection": "Secondary",
+      "stdClass": "9",
+      "stdDivision": "B",
+      "stdYear": "2022",
+      "stdMarks": "",
+      "stdMaths": 89,
+      "stdEnglish": 78,
+      "stdScience": 89
+    },
+    {
+      "id": 5,
+      "stdName": "Ranu",
+      "stdSection": "Secondary",
+      "stdClass": "8",
+      "stdDivision": "C",
+      "stdYear": "2022",
+      "stdMarks": "",
+      "stdMaths": 99,
+      "stdEnglish": 78,
+      "stdScience": 89
+    },
+    {
+      "id": 6,
+      "stdName": "Penina",
+      "stdSection": "Secondary",
+      "stdClass": "7",
+      "stdDivision": "A",
+      "stdYear": "2022",
+      "stdMarks": "",
+      "stdMaths": 78,
+      "stdEnglish": 67,
+      "stdScience": 90
+    },
+    {
+      "id": 7,
+      "stdName": "Khalid",
+      "stdSection": "Secondary",
+      "stdClass": "6",
+      "stdDivision": "D",
+      "stdYear": "2022",
+      "stdMarks": "",
+      "stdMaths": 67,
+      "stdEnglish": 89,
+      "stdScience": 99
+    },
+    {
+      "id": 8,
+      "stdName": "Kavitha",
+      "stdSection": "Secondary",
+      "stdClass": "9",
+      "stdDivision": "B",
+      "stdYear": "2022",
+      "stdMarks": "",
+      "stdMaths": 88,
+      "stdEnglish": 97,
+      "stdScience": 99
+    }
+  ],
+  "comments": [],
+  "signup": [
+    {
+      "name": "Deena",
+      "email": "deena@gmail.com",
+      "pwd": "deena123",
+      "id": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

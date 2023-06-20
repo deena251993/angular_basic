@@ -1,0 +1,280 @@
+<nav class="navbar navbar-light bg-dark">
+  <div class="container-fluid">
+    <h2 class="text-light primary py-3">
+      Student Management System
+    </h2>
+    <div class="d-flex">
+      <button (click)="add()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Add
+        student</button>&nbsp;
+      <button routerLink="/login" class="btn btn-warning">Logout</button>
+    </div>
+  </div>
+</nav>
+<!--------------------Table------------------------>
+<table class="table mt-2">
+  <thead>
+    <tr>
+      <th>
+
+        <span>Id</span>
+
+      </th>
+      <th>
+        <div class="col-header">
+          <!-- <input #nameVar placeholder="Search name" (keyup)="searchFilter()" type="text" name="" id="" /> -->
+          <span>Name</span>
+        </div>
+      </th>
+      <th>
+        <div class="col-header">
+          <input #sectionVar placeholder="Search section" (keyup)="searchFilter()" type="text" name="" id="" />
+          <br />
+          <span>Section</span>
+        </div>
+      </th>
+      <th>
+        <div class="col-header">
+          <input #yearVar placeholder="Search year" (keyup)="searchFilter()" type="text" name="" id="" />
+          <br />
+          <span>Year</span>
+        </div>
+      </th>
+      <th>
+        <div class="col-header">
+          <input #classVar placeholder="Search class" (keyup)="searchFilter()" type="text" name="" id="" />
+          <br />
+          <span>Class</span>
+        </div>
+      </th>
+      <th>
+        <div class="col-header">
+          <!-- <input #divVar placeholder="Search div" (keyup)="searchFilter()" type="text" name="" id="" /> -->
+          <span>Division</span>
+        </div>
+      </th>
+      <!-- <th>
+            <div class="col-header">
+              <input #marksVar placeholder="search marks" (keyup)="searchFilter()" type="text" name="" id="" />
+              <span>Total Marks</span>  
+            </div>
+          </th> -->
+      <th>
+        <div class="col-header">
+          <span>Edit</span>
+        </div>
+      </th>
+      <th>
+        <div class="col-header">
+          <span>View</span>
+        </div>
+      </th>
+      <th>
+        <div class="col-header">
+          <span>Delete</span>
+        </div>
+      </th>
+      <!-- <th scope="col">Id</th>
+            <th scope="col">Name   </th>
+            <th scope="col">Section</th>
+            <th scope="col">Class  </th>
+            <th scope="col">Year   </th>
+            <th scope="col">Total Marks  </th>
+            <th scope="col">Action </th>         -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of tempStudentListArray">
+      <td>{{data.id}} </td>
+      <td>{{data.stdName}} </td>
+      <td>{{data.stdSection}}</td>
+      <td>{{data.stdYear}} </td>
+      <td>{{data.stdClass}} </td>
+      <td>{{data.stdDivision}} </td>
+      <!-- <td>{{data.stdMarks}}  </td> -->
+      <td>
+        <button class="btn btn-success" (click)="edit(data)" data-bs-toggle="modal"
+          data-bs-target="#exampleModal">Edit</button>&nbsp;
+      </td>
+      <td>
+        <button class="btn btn-info" (click)="edit(data)" data-bs-toggle="modal"
+          data-bs-target="#viewModal">View Details</button>&nbsp;
+      </td>
+      <td><button class="btn btn-danger" (click)="deleteStudent(data.id)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+<!-- Modal for edit & add-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background:blue;" class="modal-header">
+        <h5 style="color:aliceblue;font-size: 26px; margin-left:62px;font-weight:620;" class="modal-title"
+          id="exampleModalLabel">STUDENT MANAGEMENT</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formValue">
+          <div class="row">
+          <div class="form-group col-sm-6">
+            <label for="studentName" class="form-label">Name</label>
+            <input type="name" id="studentName" formControlName="stdName" class="form-control"
+              aria-labelledby="studentName" placeholder="Enter student's name">
+            <small *ngIf="formValue.get('stdName')?.invalid && formValue.get('stdName')?.touched"
+              class="text-danger">Name is required</small>
+          </div>
+          <div class="form-group col-sm-6">
+            <label for="studentSection" class="form-label">Section</label>
+            <input type="text" id="studentSection" formControlName="stdSection" class="form-control"
+              aria-labelledby="studentSection" placeholder="Enter student's section">
+            <small *ngIf="formValue.get('stdSection')?.invalid && formValue.get('stdSection')?.touched"
+              class="text-danger">Section is required</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-6">
+            <label for="studentClass" class="form-label">Class</label>
+            <input type="text" id="studentClass" formControlName="stdClass" class="form-control"
+              aria-labelledby="studentClass" placeholder="Enter student's class">
+            <small *ngIf="formValue.get('stdClass')?.invalid && formValue.get('stdClass')?.touched"
+              class="text-danger">Class is required</small>
+          </div>
+          <div class="form-group col-sm-6">
+            <label for="studentDivision" class="form-label">Division</label>
+            <input type="text" id="studentDivision" formControlName="stdDivision" class="form-control"
+              aria-labelledby="studentDivision" placeholder="Enter student's division">
+            <small *ngIf="formValue.get('stdDivision')?.invalid && formValue.get('stdDivision')?.touched"
+              class="text-danger">Division is required</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-6">
+            <label for="studentYear" class="form-label">Academic Year</label>
+            <input type="text" id="studentYear" formControlName="stdYear" class="form-control"
+              aria-labelledby="studentYear" placeholder="Enter academic year">
+            <small *ngIf="formValue.get('stdYear')?.invalid && formValue.get('stdYear')?.touched"
+              class="text-danger">Year is required</small>
+          </div>
+          <!-- <div class="form-group">
+                <label for="studentMarks" class="form-label">Total Marks</label>
+                <input type="number" id="studentMarks" formControlName="stdMarks" class="form-control" aria-labelledby="studentMarks" placeholder="Enter student's marks">
+                <small *ngIf = "formValue.get('stdMarks')?.invalid && formValue.get('stdMarks')?.touched" class="text-danger">Student marks is required</small>
+           </div> -->
+          <div class="form-group col-sm-6">
+            <label for="studentMarksMaths" class="form-label">Maths Marks</label>
+            <input type="number" id="studentMarksMaths" formControlName="stdMaths" class="form-control"
+              aria-labelledby="studentMarksMaths" placeholder="Enter Maths marks">
+            <small *ngIf="formValue.get('stdMaths')?.invalid && formValue.get('stdMaths')?.touched"
+              class="text-danger"> Maths mark is required</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-6">
+            <label for="studentMarksEng" class="form-label">English Marks</label>
+            <input type="number" id="studentMarksEng" formControlName="stdEnglish" class="form-control"
+              aria-labelledby="studentMarksEng" placeholder="Enter English marks">
+            <small *ngIf="formValue.get('stdEnglish')?.invalid && formValue.get('stdEnglish')?.touched"
+              class="text-danger">English marks is required</small>
+          </div>
+          <div class="form-group col-sm-6">
+            <label for="studentMarksSci" class="form-label">Science Marks</label>
+            <input type="number" id="studentMarksSci" formControlName="stdScience" class="form-control"
+              aria-labelledby="studentMarksSci" placeholder="Enter Science marks">
+            <small *ngIf="formValue.get('stdScience')?.invalid && formValue.get('stdScience')?.touched"
+              class="text-danger">Science marks is required</small>
+          </div>
+        </div>
+        </form>
+      </div>
+      <div style="background:blue;" class="modal-footer">
+        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+        <button *ngIf="showadd" type="button" (click)="addStudent()" class="btn btn-success">Add</button>
+        <button *ngIf="showupdate" type="button" (click)="updateStudent()" class="btn btn-success">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal for view-->
+<div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background:blue;" class="modal-header">
+        <h5 style="color:aliceblue;font-size: 26px; margin-left:62px;font-weight:620;" class="modal-title"
+          id="exampleModalLabel">STUDENT MANAGEMENT</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formValue">
+          <div class="row">
+            <div class="form-group col-sm-6">
+              <label for="studentName" class="form-label">Name</label>
+              <input type="name" id="studentName" formControlName="stdName" class="form-control"
+                aria-labelledby="studentName" placeholder="Enter student's name" readonly>
+              <small *ngIf="formValue.get('stdName')?.invalid && formValue.get('stdName')?.touched"
+                class="text-danger">Name is required</small>
+            </div>
+            <div class="form-group col-sm-6">
+              <label for="studentSection" class="form-label">Section</label>
+              <input type="text" id="studentSection" formControlName="stdSection" class="form-control"
+                aria-labelledby="studentSection" placeholder="Enter student's section" readonly>
+              <small *ngIf="formValue.get('stdSection')?.invalid && formValue.get('stdSection')?.touched"
+                class="text-danger">Section is required</small>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-6">
+              <label for="studentClass" class="form-label">Class</label>
+              <input type="text" id="studentClass" formControlName="stdClass" class="form-control"
+                aria-labelledby="studentClass" placeholder="Enter student's class" readonly>
+              <small *ngIf="formValue.get('stdClass')?.invalid && formValue.get('stdClass')?.touched"
+                class="text-danger">Class is required</small>
+            </div>
+            <div class="form-group col-sm-6">
+              <label for="studentDivision" class="form-label">Division</label>
+              <input type="text" id="studentDivision" formControlName="stdDivision" class="form-control"
+                aria-labelledby="studentDivision" placeholder="Enter student's division" readonly>
+              <small *ngIf="formValue.get('stdDivision')?.invalid && formValue.get('stdDivision')?.touched"
+                class="text-danger">Division is required</small>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-6">
+              <label for="studentYear" class="form-label">Academic Year</label>
+              <input type="text" id="studentYear" formControlName="stdYear" class="form-control"
+                aria-labelledby="studentYear" placeholder="Enter academic year" readonly>
+              <small *ngIf="formValue.get('stdYear')?.invalid && formValue.get('stdYear')?.touched"
+                class="text-danger">Year is required</small>
+            </div>
+            <div class="form-group col-sm-6">
+              <label for="studentMarksMaths" class="form-label">Maths Marks</label>
+              <input type="number" id="studentMarksMaths" formControlName="stdMaths" class="form-control"
+                aria-labelledby="studentMarksMaths" placeholder="Enter Maths marks" readonly>
+              <small *ngIf="formValue.get('stdMaths')?.invalid && formValue.get('stdMaths')?.touched"
+                class="text-danger">Maths mark is required</small>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-6">
+              <label for="studentMarksEng" class="form-label">English Marks</label>
+              <input type="number" id="studentMarksEng" formControlName="stdEnglish" class="form-control"
+                aria-labelledby="studentMarksEng" placeholder="Enter  English marks" readonly>
+              <small *ngIf="formValue.get('stdEnglish')?.invalid && formValue.get('stdEnglish')?.touched"
+                class="text-danger">English marks is required</small>
+            </div>
+
+            <div class="form-group col-sm-6">
+              <label for="studentMarksSci" class="form-label">Science Marks</label>
+              <input type="number" id="studentMarksSci" formControlName="stdScience" class="form-control"
+                aria-labelledby="studentMarksSci" placeholder="Enter  Science marks" readonly>
+              <small *ngIf="formValue.get('stdScience')?.invalid && formValue.get('stdScience')?.touched"
+                class="text-danger">Science marks is required</small>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div style="background:blue;" class="modal-footer">
+        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
