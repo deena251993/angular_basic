@@ -10,54 +10,55 @@
     </div>
   </div>
 </nav>
+<div class = "container">
+  <div class="row">
+    <div class="form-group">
+      <br/>
+        <input placeholder="Search section"  type="text" [(ngModel)]="sectionText" />&nbsp;      
+        <input placeholder="Search year"  type="text" [(ngModel)]="yearText" />&nbsp;    
+        <input placeholder="Search class"  type="text" [(ngModel)]="classText" />
+    </div>
+    </div>
+</div>
+
 <!--------------------Table------------------------>
 <table class="table mt-2">
   <thead>
     <tr>
       <th>
-
         <span>Id</span>
-
       </th>
       <th>
         <div class="col-header">
-          <!-- <input #nameVar placeholder="Search name" (keyup)="searchFilter()" type="text" name="" id="" /> -->
           <span>Name</span>
         </div>
       </th>
       <th>
         <div class="col-header">
-          <input #sectionVar placeholder="Search section" (keyup)="searchFilter()" type="text" name="" id="" />
-          <br />
+          <!-- <input #sectionVar placeholder="Search section" (keyup)="searchFilter()" type="text" name="" id="" />
+          <br /> -->
           <span>Section</span>
         </div>
       </th>
       <th>
         <div class="col-header">
-          <input #yearVar placeholder="Search year" (keyup)="searchFilter()" type="text" name="" id="" />
-          <br />
+          <!-- <input #yearVar placeholder="Search year" (keyup)="searchFilter()" type="text" name="" id="" />
+          <br /> -->
           <span>Year</span>
         </div>
       </th>
       <th>
         <div class="col-header">
-          <input #classVar placeholder="Search class" (keyup)="searchFilter()" type="text" name="" id="" />
-          <br />
+          <!-- <input #classVar placeholder="Search class" (keyup)="searchFilter()" type="text" name="" id="" />
+          <br /> -->
           <span>Class</span>
         </div>
       </th>
       <th>
         <div class="col-header">
-          <!-- <input #divVar placeholder="Search div" (keyup)="searchFilter()" type="text" name="" id="" /> -->
           <span>Division</span>
         </div>
       </th>
-      <!-- <th>
-            <div class="col-header">
-              <input #marksVar placeholder="search marks" (keyup)="searchFilter()" type="text" name="" id="" />
-              <span>Total Marks</span>  
-            </div>
-          </th> -->
       <th>
         <div class="col-header">
           <span>Edit</span>
@@ -83,14 +84,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let data of tempStudentListArray">
+    <tr *ngFor="let data of allStudentData | searchfilter : sectionText :yearText : classText">
+    <!-- <tr *ngFor="let data of tempStudentListArray | searchfilter : sectionText :yearText : classText"> -->
       <td>{{data.id}} </td>
       <td>{{data.stdName}} </td>
       <td>{{data.stdSection}}</td>
       <td>{{data.stdYear}} </td>
       <td>{{data.stdClass}} </td>
       <td>{{data.stdDivision}} </td>
-      <!-- <td>{{data.stdMarks}}  </td> -->
       <td>
         <button class="btn btn-success" (click)="edit(data)" data-bs-toggle="modal"
           data-bs-target="#exampleModal">Edit</button>&nbsp;
@@ -187,8 +188,8 @@
       </div>
       <div style="background:blue;" class="modal-footer">
         <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
-        <button *ngIf="showadd" type="button" (click)="addStudent()" class="btn btn-success">Add</button>
-        <button *ngIf="showupdate" type="button" (click)="updateStudent()" class="btn btn-success">Update</button>
+        <button *ngIf="showadd" type="button" (click)="addStudent()"  class="btn btn-success" data-bs-dismiss="modal">Add</button>
+        <button *ngIf="showupdate" type="button" (click)="updateStudent()"class="btn btn-success"  data-bs-dismiss="modal">Update</button>
       </div>
     </div>
   </div>

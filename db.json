@@ -9,8 +9,8 @@
       "stdYear": "2023",
       "stdMarks": "",
       "stdMaths": 98,
-      "stdEnglish": 90,
-      "stdScience": 89
+      "stdEnglish": 95,
+      "stdScience": 88
     },
     {
       "id": 2,
@@ -86,15 +86,15 @@
     },
     {
       "id": 8,
-      "stdName": "Kavitha",
+      "stdName": "Deraa",
       "stdSection": "Secondary",
       "stdClass": "9",
-      "stdDivision": "B",
-      "stdYear": "2022",
+      "stdDivision": "C",
+      "stdYear": "2023",
       "stdMarks": "",
       "stdMaths": 88,
-      "stdEnglish": 97,
-      "stdScience": 99
+      "stdEnglish": 78,
+      "stdScience": 90
     }
   ],
   "comments": [],

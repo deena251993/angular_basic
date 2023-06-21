@@ -15,13 +15,16 @@ export class StudentComponent implements OnInit {
  studentmodelObj :studentData = new studentData;
  tempStudentListArray :any;
 
+sectionText : any = '';
+classText   : any = '';
+yearText    : any = '';
+
 //  @ViewChild('nameVar')    nameVar:    any = '';
- @ViewChild('sectionVar') sectionVar: any = '';
- @ViewChild('classVar')   classVar:   any = '';
- @ViewChild('yearVar')    yearVar:    any = '';
+//  @ViewChild('sectionVar') sectionVar: any = '';
+//  @ViewChild('classVar')   classVar:   any = '';
+//  @ViewChild('yearVar')    yearVar:    any = '';
 //  @ViewChild('marksVar')   marksVar:   any = '';
  constructor(private formBuilder:FormBuilder,private api :ApiService) {
-
  }
 
  ngOnInit():void{
@@ -70,7 +73,6 @@ this.formValue.controls['stdMarks'].setValue(data.stdMarks);
 this.formValue.controls['stdMaths'].setValue(data.stdMaths);
 this.formValue.controls['stdEnglish'].setValue(data.stdEnglish);
 this.formValue.controls['stdScience'].setValue(data.stdScience);
-//console.log("edit!!!!!!",this.studentmodelObj.id)
 }
 
 // To Add student//
@@ -86,7 +88,7 @@ addStudent(){
   this.studentmodelObj.stdScience   = this. formValue.value.stdScience;
   this.api.postStudent(this.studentmodelObj).subscribe(res=>{
          //console.log(res);
-         alert("Student added successfully!");      
+         alert("Student details added successfully!");      
          this.getStudent();
          this.formValue.reset();
   },
@@ -109,7 +111,7 @@ updateStudent(){
   this.studentmodelObj.stdScience   = this. formValue.value.stdScience;
   this.api.updateStudent(this.studentmodelObj,this.studentmodelObj.id).subscribe(res=>{
          //console.log(res);
-         alert("Student updated successfully!");                
+         alert("Student details updated successfully!");                
          this.getStudent();
          this.formValue.reset();
   },
@@ -133,29 +135,29 @@ updateStudent(){
     })
   }
 
-  searchFilter() {
-    this.tempStudentListArray=[] ;
-    let filterObject: any = {
-      // stdName: this.nameVar.nativeElement.value,
-      stdSection: this.sectionVar.nativeElement.value,
-      stdClass: this.classVar.nativeElement.value,
-      stdYear: this.yearVar.nativeElement.value,
-      // stdMarks: this.marksVar.nativeElement.value,   
-    };
-    for (let i = 0; i < this.allStudentData.length; i++) {
-      let isStringExist:any;
-      for (let key in filterObject) {
-        isStringExist =this.allStudentData[i][key].toString().toUpperCase()
-            .indexOf(filterObject[key].toString().toUpperCase()) > -1;
-        if (isStringExist == false) {
-          break;
-        }
-      }
-      if (isStringExist) {
-        this.tempStudentListArray.push(this.allStudentData[i]);
-      }
-    }
-  }
+  // searchFilter() {
+  //   this.tempStudentListArray=[] ;
+  //   let filterObject: any = {
+  //     // stdName: this.nameVar.nativeElement.value,
+  //     stdSection: this.sectionVar.nativeElement.value,
+  //     stdClass: this.classVar.nativeElement.value,
+  //     stdYear: this.yearVar.nativeElement.value,
+  //     // stdMarks: this.marksVar.nativeElement.value,   
+  //   };
+  //   for (let i = 0; i < this.allStudentData.length; i++) {
+  //     let isStringExist:any;
+  //     for (let key in filterObject) {
+  //       isStringExist =this.allStudentData[i][key].toString().toUpperCase()
+  //           .indexOf(filterObject[key].toString().toUpperCase()) > -1;
+  //       if (isStringExist == false) {
+  //         break;
+  //       }
+  //     }
+  //     if (isStringExist) {
+  //       this.tempStudentListArray.push(this.allStudentData[i]);
+  //     }
+  //   }
+  // }
 }
 
 
